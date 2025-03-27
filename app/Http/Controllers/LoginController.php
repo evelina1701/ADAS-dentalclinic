@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
@@ -13,29 +14,32 @@ class LoginController extends Controller
      *
      * @return void
      */
-    public function __construct()
-    {
-        // Applying the guest middleware for login route
-        $this->middleware('guest')->except('logout');
+// Login method
+public function login(Request $request)
+{
+    // Validate the login credentials
+    $credentials = $request->only('email', 'password');
+
+    // Attempt to log in the user
+    if (Auth::attempt($credentials)) {
+        $user = Auth::user();  // Get the authenticated user
+
+        // Debug: Check user roles
+        //dd($user->roles); // This should display the user roles
+
+        // Check if the user is an admin
+        if ($user->hasRole('admin')) {
+            dd($user->hasRole('admin'));  // Check if this returns true for the admin user
+            // Redirect admin to the admin panel
+            return redirect()->route('admin.users.index');
+        }
+
+        // Redirect other users to the default dashboard
+        return redirect()->route('dashboard');
     }
 
-    // Add your login methods here
-        // Login form method
-        public function showLoginForm()
-        {
-            return view('auth.login');
-        }
-    
-        // Login method
-        public function login(Request $request)
-        {
-            // Your login logic here
-        }
-    
-        // Logout method
-        public function logout(Request $request)
-        {
-            Auth::logout();
-            return redirect('/');
-        }
+    return back()->withErrors(['email' => 'Invalid credentials.'])->withInput();
+}
+
+
 }

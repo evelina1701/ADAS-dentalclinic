@@ -2,34 +2,38 @@
 
 @section('content')
 <div class="container">
-    <h2>Create User</h2>
+    <h1>Create User</h1>
     <form action="{{ route('admin.users.store') }}" method="POST">
         @csrf
-        <div class="mb-3">
-            <label>Name</label>
+        <div class="form-group mt-2">
+            <label for="name">Name</label>
             <input type="text" name="name" class="form-control" required>
         </div>
-        <div class="mb-3">
-            <label>Email</label>
+        <div class="form-group mt-2">
+            <label for="surname">Surname</label>
+            <input type="text" name="surname" class="form-control" required>
+        </div>
+        <div class="form-group mt-2">
+            <label for="email">Email</label>
             <input type="email" name="email" class="form-control" required>
         </div>
-        <div class="mb-3">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Confirm Password</label>
-            <input type="password" name="password_confirmation" class="form-control" required>
-        </div>
-        <div class="mb-3">
-            <label>Role</label>
+        <div class="form-group mt-2">
+            <label for="role">Role</label>
             <select name="role" class="form-control" required>
                 @foreach($roles as $role)
-                <option value="{{ $role->name }}">{{ ucfirst($role->name) }}</option>
+                    <option value="{{ $role }}">{{ ucfirst($role) }}</option>
                 @endforeach
             </select>
         </div>
-        <button class="btn btn-primary">Create User</button>
+        <div class="form-group mt-2">
+            <label for="password">Password</label>
+            <input type="password" name="password" class="form-control" required>
+        </div>
+        <div class="form-group mt-2">
+            <label for="password_confirmation">Confirm Password</label>
+            <input type="password" name="password_confirmation" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-success mt-3">Create</button>
     </form>
 </div>
 @endsection

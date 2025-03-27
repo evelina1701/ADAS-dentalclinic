@@ -15,8 +15,20 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+
+                        <!-- Manage Users Link: visible only if user has 'view users' permission -->
+                    @if(auth()->check() && auth()->user()->can('view users'))
+                        <x-nav-link :href="route('admin.users.index')" :active="request()->routeIs('admin.users.*')">
+                            {{ __('Manage Users') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if(auth()->check() && auth()->user()->can('change role permissions'))
+                        <x-nav-link :href="route('admin.roles.index')" :active="request()->routeIs('admin.roles.*')">
+                            {{ __('Manage Roles') }}
+                        </x-nav-link>
+                    @endif
                 </div>
-            </div>
 
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">

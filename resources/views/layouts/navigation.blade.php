@@ -28,6 +28,24 @@
                             {{ __('Manage Roles') }}
                         </x-nav-link>
                     @endif
+
+                    @if(auth()->check() && auth()->user()->can('view appointments'))
+                        <x-nav-link :href="route('admin.visits.index')" :active="request()->routeIs('admin.visits.*')">
+                            {{ __('Manage Visits') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if(auth()->check() && auth()->user()->can('view patients'))
+                        <x-nav-link :href="route('admin.patients.index')" :active="request()->routeIs('admin.patients.*')">
+                            {{ __('Manage Patients') }}
+                        </x-nav-link>
+                    @endif
+
+                    @if(auth()->check() && auth()->user()->can('view medical records'))
+                        <x-nav-link :href="route('admin.medical_records.index')" :active="request()->routeIs('admin.medical_records.*')">
+                            {{ __('Manage Medical Records') }}
+                        </x-nav-link>
+                    @endif
                 </div>
 
             <!-- Settings Dropdown -->

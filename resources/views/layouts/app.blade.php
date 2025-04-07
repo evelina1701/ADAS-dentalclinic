@@ -11,7 +11,14 @@
         <link rel="preconnect" href="https://fonts.bunny.net">
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
 
-        <!-- Scripts -->
+        <!-- Flatpickr CSS via CDN -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <!-- jQuery and jQuery UI (for autocomplete) -->
+        <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+
+        <!-- Scripts via Vite -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased">
@@ -32,5 +39,10 @@
                 @yield('content')
             </main>
         </div>
+
+        <!-- Flatpickr JS via CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+        <!-- All page-specific scripts will be pushed here -->
+        @stack('scripts')
     </body>
 </html>

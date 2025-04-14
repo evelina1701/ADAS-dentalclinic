@@ -4,12 +4,7 @@
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
     <!-- Header Row -->
     <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-semibold text-gray-800">Roles</h1>
-        {{-- If you want a "Create New Role" button, uncomment and update the link below --}}
-        {{-- <a href="{{ route('admin.roles.create') }}"
-           class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-white hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring-blue-300">
-            Create New Role
-        </a> --}}
+        <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Roles</h1>
     </div>
 
     <!-- Success Message -->

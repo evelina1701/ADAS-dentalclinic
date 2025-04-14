@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 py-6">
-    <h1 class="text-2xl font-bold text-gray-800 mb-6">Create New Patient</h1>
+    <h1 class="text-2xl font-bold text-gray-800 dark:text-gray-200 mb-6">Create New Patient</h1>
     <form action="{{ route('admin.patients.store') }}" method="POST" class="bg-white shadow rounded-md p-6">
         @csrf
         

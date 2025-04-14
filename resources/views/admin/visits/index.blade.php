@@ -4,9 +4,9 @@
 <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-6">
     <!-- Header Row: Title and Create Button -->
     <div class="flex items-center justify-between mb-6">
-        <h1 class="text-2xl font-semibold text-gray-800">Manage Visits</h1>
+        <h1 class="text-2xl font-semibold text-gray-800 dark:text-gray-200">Manage Visits</h1>
         <a href="{{ route('admin.visits.create') }}" 
-           class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-gray-800 hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring-blue-300">
+           class="inline-flex items-center px-4 py-2 bg-blue-600 border border-transparent rounded-md font-semibold text-gray-800 dark:text-gray-200 hover:bg-blue-700 focus:outline-none focus:border-blue-700 focus:ring-blue-300">
             Create New Visit
         </a>
     </div>

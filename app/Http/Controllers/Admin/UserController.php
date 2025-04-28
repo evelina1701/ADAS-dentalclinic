@@ -38,13 +38,10 @@ class UserController extends Controller
             'role'                  => 'required|in:admin,receptionist,dentist',
         ]);
 
-        //dd($request->all());
-
         $user = User::create([
             'name'     => $request->name,
             'surname'  => $request->surname,
             'email'    => $request->email,
-            //'role'     => $request->role,
             'password' => Hash::make($request->password),
         ]);
 
@@ -70,7 +67,6 @@ class UserController extends Controller
         'surname' => 'required|string|max:255',
         'email' => 'required|email|unique:users,email,' . $user->id,
         'role' => 'required|in:admin,receptionist,dentist,manager', 
-        // or you might keep it if you want to validate the incoming role name
     ];
 
     if ($request->filled('password')) {
@@ -89,8 +85,7 @@ class UserController extends Controller
 
     $user->save();
 
-    // Now assign or sync the role via Spatie:
-    // If your form sends a single role, you can do:
+    // Assign or sync the role via Spatie:
     $user->syncRoles([$request->role]);
 
     return redirect()->route('admin.users.index')

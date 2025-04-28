@@ -19,7 +19,6 @@ class PatientController extends Controller
     public function create()
     {
         $patient = new Patient();
-        //dd($patient);
         return view('admin.patients.create', compact('patient'));
     }
 
@@ -82,7 +81,7 @@ class PatientController extends Controller
     // Delete the specified patient (if allowed)
     public function destroy(Patient $patient)
     {
-        // Optionally check if patient has related records before deletion
+        // Check if patient has related records before deletion
         if ($patient->medicalRecords()->exists()) {
             return redirect()->route('admin.patients.index')
                              ->with('error', 'Cannot delete patient with existing medical records.');
@@ -96,11 +95,11 @@ class PatientController extends Controller
 
     public function fetchCodes(Request $request)
     {
-        $searchTerm = $request->query('q'); // the query string param, e.g. ?q=12345
+        $searchTerm = $request->query('q');
         // Find patients whose personal code starts with or contains the search term
         $codes = Patient::where('patient_personal_code', 'like', $searchTerm . '%')
                         ->limit(10)
-                        ->pluck('patient_personal_code'); // returns an array of strings
+                        ->pluck('patient_personal_code');
 
         return response()->json($codes);
     }

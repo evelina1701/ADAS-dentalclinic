@@ -25,7 +25,6 @@ class MedicalRecord extends Model
 
     public function specialist()
     {
-        // If you're using soft deletes on User, you might want:
         return $this->belongsTo(User::class, 'specialist_id')->withTrashed();
     }
 }

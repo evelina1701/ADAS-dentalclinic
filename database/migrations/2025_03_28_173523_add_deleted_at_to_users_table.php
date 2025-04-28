@@ -8,7 +8,6 @@ return new class extends Migration {
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            // Check if the column doesn't exist (optional but safe)
             if (!Schema::hasColumn('users', 'deleted_at')) {
                 $table->softDeletes();
             }

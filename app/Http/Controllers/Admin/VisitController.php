@@ -13,7 +13,7 @@ class VisitController extends Controller
     // Display a list of visits
     public function index()
     {
-        // Eager load patient and specialist relationships for efficiency
+        // Eager load patient and specialist relationships
         $visits = Visit::with(['patient', 'specialist'])->get();
         return view('admin.visits.index', compact('visits'));
     }
@@ -21,10 +21,8 @@ class VisitController extends Controller
     // Show the form to create a new visit
     public function create()
     {
-        // For selecting a patient, you might use an autocomplete or dropdown.
-        // For now, we’ll pass all patients and specialists.
         $patients = Patient::all();
-        $specialists = User::role('dentist')->get(); // or get specialists by filtering appropriate role
+        $specialists = User::role('dentist')->get();
 
         return view('admin.visits.create', compact('patients', 'specialists'));
     }

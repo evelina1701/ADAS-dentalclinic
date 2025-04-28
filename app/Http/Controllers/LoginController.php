@@ -24,9 +24,6 @@ public function login(Request $request)
     if (Auth::attempt($credentials)) {
         $user = Auth::user();  // Get the authenticated user
 
-        // Debug: Check user roles
-        //dd($user->roles); // This should display the user roles
-
         // Check if the user is an admin
         if ($user->hasRole('admin')) {
             dd($user->hasRole('admin'));  // Check if this returns true for the admin user

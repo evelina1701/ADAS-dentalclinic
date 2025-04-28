@@ -6,7 +6,6 @@ use Illuminate\Database\Eloquent\Model;
 
 class Patient extends Model
 {
-    // Set primary key if you want a custom name (patient_id)
     protected $primaryKey = 'patient_id';
 
     protected $fillable = [

@@ -14,7 +14,7 @@ class RemoveIsAdminFromUsersTable extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('is_admin'); // Drop the column
+            $table->dropColumn('is_admin');
         });
     }
 
@@ -26,7 +26,7 @@ class RemoveIsAdminFromUsersTable extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->boolean('is_admin')->default(0); // Add the column back if rollback is needed
+            $table->boolean('is_admin')->default(0);
         });
     }
 }

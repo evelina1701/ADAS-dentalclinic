@@ -27,7 +27,7 @@ class RoleController extends Controller
     // Update role permissions
     public function update(Request $request, Role $role)
     {
-        // Validate that the permissions are provided as an array (optional)
+        // Validate that the permissions are provided as an array
         $request->validate([
             'permissions' => 'array',
         ]);
